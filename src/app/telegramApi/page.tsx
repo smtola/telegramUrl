@@ -69,16 +69,6 @@ export default function TelegramUsers() {
         },
         body: JSON.stringify({
           welcome: 'Welcome to telegram',
-           reply_markup: {
-            "inline_keyboard": [
-              [
-                {
-                  "text": "Confirm",
-                  "url": " https://telegram-url.vercel.app/telegramApi"
-                }
-              ]
-            ]
-          }
         }),
       });
 

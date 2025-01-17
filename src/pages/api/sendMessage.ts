@@ -13,11 +13,7 @@ export default async function handler(
   const { welcome } = req.body;
 
 
-  const message = `
-    📦 *New Product Information* 📦
-    - 📇 *Customer Name:* ${welcome}
-    }
-    `;
+  const message = `${welcome}`;
 
   const url = `https://telegram.rest/bot${apiKey}/sendMessage`;
 
@@ -28,7 +24,17 @@ export default async function handler(
       body: JSON.stringify({
         chat_id: 5687548307,
         text: message,
-        parse_mode: "Markdown", // Enables formatting
+        parse_mode: "Markdown",
+        reply_markup: {
+          inline_keyboard: [
+            [
+              {
+                text: "Start Message",
+                url: "https://telegram-url.vercel.app/telegramApi",
+              },
+            ],
+          ],
+        },
       }),
     });
 
