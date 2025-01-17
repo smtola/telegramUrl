@@ -59,32 +59,42 @@ export default function TelegramUsers() {
     }
   }, [userData, chatId, firstName, lastName, username]);
 
-//   useEffect(() => {
-//   const updateUserData = async () => {
-//     try {
-//       const res = await fetch("/api/sendMessage", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           welcome:'Welcome to telegram',
-//         }),
-//       });
+  useEffect(() => {
+  const updateUserData = async () => {
+    try {
+      const res = await fetch("/api/sendMessage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          welcome: 'Welcome to telegram',
+           reply_markup: {
+            "inline_keyboard": [
+              [
+                {
+                  "text": "Confirm",
+                  "url": " https://telegram-url.vercel.app/telegramApi"
+                }
+              ]
+            ]
+          }
+        }),
+      });
 
-//       if (!res.ok) {
-//         throw new Error(`HTTP error! status: ${res.status}`);
-//       }
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
 
-//       const data = await res.json();
-//       console.log("Response:", data);
-//     } catch (error) {
-//       console.error("Error sending message:", error);
-//     }
-//   };
+      const data = await res.json();
+      console.log("Response:", data);
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
+  };
 
-//   updateUserData();
-// }, []);
+  updateUserData();
+}, []);
 
-  return ;
+  return (<h1>Welcome to my team!</h1>);
 }
